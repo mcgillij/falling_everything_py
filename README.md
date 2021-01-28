@@ -2,3 +2,5 @@
 Falling sand "nolla" style
 
 Just a small demo written in python of the "tech" used in Nolla's Noita engine
+
+![Noita Sim](/images/noita.gif)

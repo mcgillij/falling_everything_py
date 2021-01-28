@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "falling_everything_py"
+version = "0.1.0"
+description = ""
+authors = ["mcgillij <mcgillivray.jason@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pygame = "^2.0.1"
+numpy = "^1.19.5"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.19.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

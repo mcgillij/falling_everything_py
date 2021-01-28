@@ -9,29 +9,26 @@ RENDER_REZ_Y = 512
 green = pg.Color(0, 255,0)
 black = pg.Color(0,0,0)
 red = pg.Color(255,0,0)
+blue = pg.Color(0,0,255)
 
 def add_some_pixels(surface):
     ar = pg.PixelArray(surface)
-    ar[32,2] = black
-    ar[32,3] = black
-    ar[32,4] = black
-    ar[32,5] = black
-    ar[32,6] = black
-    ar[32,7] = black
-    ar[32,8] = black
-    ar[32,9] = black
-    ar[32,10] = black
-    ar[32,11] = black
-    ar[32,12] = black
-    ar[32,13] = black
-    ar[32,14] = black
-    ar[52,51] = black
-    ar[52,52] = black
-    ar[52,53] = black
-    ar[52,54] = black
-    # add a red line for sand to land on
+    # sand
+    for i in range(1, 15):
+        ar[32,i] = black
+    # water
+    for i in range(1, 15):
+        ar[44,i] = blue
+        ar[45,i] = blue
+    # add some solid red
     for i in range(64):
-        ar[i,54] = red
+        ar[i,63] = red
+    ar[41,60] = red
+    ar[48,60] = red
+    ar[42,61] = red
+    ar[47,61] = red
+    ar[43,62] = red
+    ar[46,62] = red
     del ar
     return surface
 
@@ -50,10 +47,32 @@ def sand(surface, x,y):
     del ar
     return surface
 
+def water(surface, x,y):
+    ar = pg.PixelArray(surface)
+    if ar[x,y] == surface.map_rgb(blue):
+        if ar[x,y+1] == surface.map_rgb(green):
+            ar[x,y+1] = blue
+            ar[x,y] = green
+        elif ar[x -1, y+1] == surface.map_rgb(green):
+            ar[x -1, y+1] = blue
+            ar[x,y] = green
+        elif ar[x+1, y+1] == surface.map_rgb(green):
+            ar[x+1, y+1] = blue
+            ar[x,y] = green
+        elif ar[x-1, y] == surface.map_rgb(green):
+            ar[x-1, y] = blue
+            ar[x,y] = green
+        elif ar[x+1, y] == surface.map_rgb(green):
+            ar[x+1, y] = blue
+            ar[x,y] = green
+    del ar
+    return surface
+
 def physics(surface):
     for x in range(REZ_X):
         for y in range(REZ_Y-1, 0, -1):
             surface = sand(surface, x, y)
+            surface = water(surface, x, y)
     return surface
 
 def reset_state(surface):

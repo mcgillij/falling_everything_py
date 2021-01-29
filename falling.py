@@ -6,65 +6,65 @@ REZ_Y = 64
 RENDER_REZ_X = 512
 RENDER_REZ_Y = 512
 
-green = pg.Color(0, 255,0)
-black = pg.Color(0,0,0)
-red = pg.Color(255,0,0)
-blue = pg.Color(0,0,255)
+GREEN = pg.Color(0, 255,0)
+BLACK = pg.Color(0,0,0)
+RED = pg.Color(255,0,0)
+BLUE = pg.Color(0,0,255)
 
 def add_some_pixels(surface):
     ar = pg.PixelArray(surface)
     # sand
     for i in range(1, 15):
-        ar[32,i] = black
+        ar[32,i] = BLACK
     # water
     for i in range(1, 15):
-        ar[44,i] = blue
-        ar[45,i] = blue
-    # add some solid red
+        ar[44,i] = BLUE
+        ar[45,i] = BLUE
+    # add some solid RED
     for i in range(64):
-        ar[i,63] = red
-    ar[41,60] = red
-    ar[48,60] = red
-    ar[42,61] = red
-    ar[47,61] = red
-    ar[43,62] = red
-    ar[46,62] = red
+        ar[i,63] = RED
+    ar[41,60] = RED
+    ar[48,60] = RED
+    ar[42,61] = RED
+    ar[47,61] = RED
+    ar[43,62] = RED
+    ar[46,62] = RED
     del ar
     return surface
 
 def sand(surface, x,y):
     ar = pg.PixelArray(surface)
-    if ar[x,y] == surface.map_rgb(black):
-        if ar[x,y+1] == surface.map_rgb(green):
-            ar[x,y+1] = black
-            ar[x,y] = green
-        elif ar[x -1, y+1] == surface.map_rgb(green):
-            ar[x -1, y+1] = black
-            ar[x,y] = green
-        elif ar[x+1, y+1] == surface.map_rgb(green):
-            ar[x+1, y+1] = black
-            ar[x,y] = green
+    if ar[x,y] == surface.map_rgb(BLACK):
+        if ar[x,y+1] == surface.map_rgb(GREEN):
+            ar[x,y+1] = BLACK
+            ar[x,y] = GREEN
+        elif ar[x -1, y+1] == surface.map_rgb(GREEN):
+            ar[x -1, y+1] = BLACK
+            ar[x,y] = GREEN
+        elif ar[x+1, y+1] == surface.map_rgb(GREEN):
+            ar[x+1, y+1] = BLACK
+            ar[x,y] = GREEN
     del ar
     return surface
 
 def water(surface, x,y):
     ar = pg.PixelArray(surface)
-    if ar[x,y] == surface.map_rgb(blue):
-        if ar[x,y+1] == surface.map_rgb(green):
-            ar[x,y+1] = blue
-            ar[x,y] = green
-        elif ar[x -1, y+1] == surface.map_rgb(green):
-            ar[x -1, y+1] = blue
-            ar[x,y] = green
-        elif ar[x+1, y+1] == surface.map_rgb(green):
-            ar[x+1, y+1] = blue
-            ar[x,y] = green
-        elif ar[x-1, y] == surface.map_rgb(green):
-            ar[x-1, y] = blue
-            ar[x,y] = green
-        elif ar[x+1, y] == surface.map_rgb(green):
-            ar[x+1, y] = blue
-            ar[x,y] = green
+    if ar[x,y] == surface.map_rgb(BLUE):
+        if ar[x,y+1] == surface.map_rgb(GREEN):
+            ar[x,y+1] = BLUE
+            ar[x,y] = GREEN
+        elif ar[x -1, y+1] == surface.map_rgb(GREEN):
+            ar[x -1, y+1] = BLUE
+            ar[x,y] = GREEN
+        elif ar[x+1, y+1] == surface.map_rgb(GREEN):
+            ar[x+1, y+1] = BLUE
+            ar[x,y] = GREEN
+        elif ar[x-1, y] == surface.map_rgb(GREEN):
+            ar[x-1, y] = BLUE
+            ar[x,y] = GREEN
+        elif ar[x+1, y] == surface.map_rgb(GREEN):
+            ar[x+1, y] = BLUE
+            ar[x,y] = GREEN
     del ar
     return surface
 
@@ -76,7 +76,7 @@ def physics(surface):
     return surface
 
 def reset_state(surface):
-    surface.fill(green)
+    surface.fill(GREEN)
     add_some_pixels(surface)
 
 def main():

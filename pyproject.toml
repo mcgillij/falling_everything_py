@@ -7,7 +7,7 @@ authors = ["mcgillij <mcgillivray.jason@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 pygame = "^2.0.1"
-numpy = "^1.19.5"
+numpy = "^1.22.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.19.0"
